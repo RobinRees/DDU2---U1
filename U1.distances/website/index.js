@@ -26,7 +26,7 @@ function createAllCityBoxes () {
         createDiv.textContent = `${city.name}`
         if (cityPrompt === city.name) {
             h2Text.innerHTML = `${cityPrompt} (${city.country})`;
-            createDiv.className = "target";
+            createDiv.className = "target cityBox";
         }
         
     }
