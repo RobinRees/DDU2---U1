@@ -29,7 +29,11 @@ findClosestAndFurthest(cityPrompt);
 
 function findClosestAndFurthest(cityPrompt) {
     let inputCityId = null;
-
+    let closestCity = null;
+    let furthestCity = null;
+    let minDistance = Infinity;
+    let maxDistance = null;
+    
     for (const city of cities) {
         if (city.name.toLocaleLowerCase() === cityPrompt.toLocaleLowerCase()) {
             inputCityId = city.id;
@@ -40,12 +44,10 @@ function findClosestAndFurthest(cityPrompt) {
 
     if (inputCityId === null) {
         h2Text.innerHTML = `${cityPrompt} finns inte i databasen;`
+        return;
     }
 
-    let closestCity = null;
-    let furthestCity = null;
-    let minDistance = Infinity;
-    let maxDistance = null;
+
 
     for (const distance of distances) {
         let otherCityId = null;
@@ -81,11 +83,6 @@ function findClosestAndFurthest(cityPrompt) {
         }
     }
 
-    h2Text.innerHTML = 
-    `Du skrev: ${cityPrompt} <br>
-    Längst bort är: ${furthestCityName} (${maxDistance} km) <br>
-    Närmast är: ${closestCityName} (${minDistance} km)`
-;
 
 }
 findClosestAndFurthest(cityPrompt);
