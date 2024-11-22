@@ -83,8 +83,27 @@ function findClosestAndFurthest(cityPrompt) {
         }
     }
 
-
+    highlightCities(cityPrompt, closestCityName, furthestCityName);
 }
+
+function highlightCities(cityPrompt, closestCityName, furthestCityName) {
+    const cityBoxes = document.querySelectorAll(".cityBox");
+
+    cityBoxes.forEach(cityBox => {
+        const cityName = cityBox.textContent;
+
+        if (cityName.toLowerCase() === cityPrompt.toLowerCase()) {
+            cityBox.classList.add("target");
+        } else if (cityName.toLowerCase() === closestCityName.toLowerCase()) {
+            cityBox.style.backgroundColor = "green";
+        } else if (cityName.toLowerCase() === furthestCityName.toLowerCase()) {
+            cityBox.style.backgroundColor = "blue";
+        } else {
+            cityBox.style.backgroundColor = ""; // Återställ om ingen match
+        }
+    });
+}
+highlightCities()
 findClosestAndFurthest(cityPrompt);
 /*
 
