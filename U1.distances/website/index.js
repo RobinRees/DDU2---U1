@@ -15,18 +15,46 @@ const cityDiv = document.querySelector("#cities");
 let cityPrompt = prompt("Skriv en stad i Europa");
 let h2Text = document.querySelector("h2");
 
-for (let i = 0; i < cities.length; i++) {
-    const createDiv3 = document.createElement("div");
-    table.appendChild(createDiv3);
-    createDiv3.className ="cell";
-    createDiv3.textContent = cities[i].name;
-    for (j = 0; i < cities.length; i++) {
-        //Distansen som hör samman med nästkommande city. 
+
+function createTable () {
+//    table.appendChild(createDiv3);
+//    createDiv3.className ="cell";
+//    createDiv3.textContent = cityName;
+
+    for (const city of cities) {
+        const createDiv3 = document.createElement("div");
+        createDiv3.textContent = city.name;
+        createDiv3.className = "cell";
+        table.appendChild(createDiv3);
+    
+
+        for (const targetCity of cities) {
+            const createDiv4 = document.createElement("div");
+            createDiv4.className = "cell";
+            let distanceValue = distanceNumber(city.id, targetCity.id);
+            createDiv4.textContent = `${distanceValue}`;
+            table.appendChild(createDiv4);
+        }
+
     }
 }
 
 
 
+
+function distanceNumber (city1Id, city2Id) {
+    for (const distance of distances) {
+        if (
+            (distance.city1 === city1Id && distance.city2 === city2Id) ||
+            (distance.city1 === city2Id && distance.city2 === city1Id)
+        ) {
+            return distance.distance / 10;
+        }
+    }
+    return "";
+}
+
+createTable ()
 
 for(let city of cities) {
     const createDiv = document.createElement("div");
