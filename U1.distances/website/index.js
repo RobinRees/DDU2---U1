@@ -7,6 +7,7 @@ table.appendChild(emptyCell);
 for (let i = 0; i < cities.length; i++) {
     const createDiv2 = document.createElement("div");
     table.appendChild(createDiv2);
+    createDiv2.style.fontWeight = "bold";
     createDiv2.className ="cell";
     createDiv2.textContent = i;
 }
@@ -23,7 +24,8 @@ function createTable () {
 
     for (const city of cities) {
         const createDiv3 = document.createElement("div");
-        createDiv3.textContent = city.name;
+        createDiv3.textContent = `${city.id}-${city.name}`;
+        createDiv3.style.fontWeight = "bold";
         createDiv3.className = "cell";
         table.appendChild(createDiv3);
     
