@@ -18,9 +18,7 @@ let h2Text = document.querySelector("h2");
 
 
 function createTable () {
-//    table.appendChild(createDiv3);
-//    createDiv3.className ="cell";
-//    createDiv3.textContent = cityName;
+    let grayBox = 0;
 
     for (const city of cities) {
         const createDiv3 = document.createElement("div");
@@ -35,6 +33,14 @@ function createTable () {
             createDiv4.className = "cell";
             let distanceValue = distanceNumber(city.id, targetCity.id);
             createDiv4.textContent = `${distanceValue}`;
+
+            if (grayBox % 2 === 0) {
+                createDiv4.style.backgroundColor = "white";
+            } else {
+                createDiv4.style.backgroundColor = "gray";
+            }
+            grayBox++;
+            
             table.appendChild(createDiv4);
         }
 
@@ -134,9 +140,9 @@ function highlightCities(cityPrompt, closestCityName, furthestCityName) {
         if (cityName.toLowerCase() === cityPrompt.toLowerCase()) {
             cityBox.classList.add("target");
         } else if (cityName.toLowerCase() === closestCityName.toLowerCase()) {
-            cityBox.style.backgroundColor = "green";
+            cityBox.classList.add("closest");
         } else if (cityName.toLowerCase() === furthestCityName.toLowerCase()) {
-            cityBox.style.backgroundColor = "blue";
+            cityBox.classList.add("furthest");
         } else {
             cityBox.style.backgroundColor = ""; // Återställ om ingen match
         }
