@@ -13,8 +13,9 @@ for (let i = 0; i < cities.length; i++) {
 }
 
 const cityDiv = document.querySelector("#cities");
-let cityPrompt = prompt("Skriv en stad i Europa");
 let h2Text = document.querySelector("h2");
+let h3Text = document.querySelector("h3");
+let cityPrompt = prompt("Skriv en stad i Europa");
 
 
 function createTable () {
@@ -63,7 +64,6 @@ function distanceNumber (city1Id, city2Id) {
 }
 
 createTable ()
-
 for(let city of cities) {
     const createDiv = document.createElement("div");
     cityDiv.appendChild(createDiv);
@@ -82,13 +82,16 @@ function findClosestAndFurthest(cityPrompt) {
     for (const city of cities) {
         if (city.name.toLocaleLowerCase() === cityPrompt.toLocaleLowerCase()) {
             inputCityId = city.id;
-            h2Text.innerHTML = `${cityPrompt} (${city.country})`;
+            h2Text.innerHTML = `${cityPrompt} (${city.country})`;      
+            document.title = `${city.name}`;
             break;
         }
     }
 
     if (inputCityId === null) {
         h2Text.innerHTML = `${cityPrompt} finns inte i databasen;`
+        document.title = `Not found`
+        h3Text.innerHTML = ``;
         return;
     }
 
@@ -127,6 +130,8 @@ function findClosestAndFurthest(cityPrompt) {
             furthestCityName = city.name;
         }
     }
+
+    
 
     highlightCities(cityPrompt, closestCityName, furthestCityName);
 }
