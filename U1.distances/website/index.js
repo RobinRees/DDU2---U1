@@ -45,7 +45,7 @@ function createTableAndColors () {
         for (const targetCity of cities) {
             const createDiv4 = document.createElement("div");
             createDiv4.className = "cell";
-            let distanceValue = distanceNumber(city.id, targetCity.id);
+            let distanceValue = distanceNumberForTable(city.id, targetCity.id);
             createDiv4.textContent = `${distanceValue}`;
 
             if (border % 2 === 1) {
@@ -70,7 +70,7 @@ function createTableAndColors () {
 
 
 
-function distanceNumber (city1Id, city2Id) {
+function distanceNumberForTable (city1Id, city2Id) {
     for (const distance of distances) {
         if (
             (distance.city1 === city1Id && distance.city2 === city2Id) ||
@@ -89,9 +89,9 @@ for(let city of cities) {
     createDiv.className = "cityBox";
     createDiv.textContent = `${city.name}`
 }
-findClosestAndFurthest(cityPrompt);
+findClosestAndFurthestCity(cityPrompt);
 
-function findClosestAndFurthest(cityPrompt) {
+function findClosestAndFurthestCity(cityPrompt) {
     let inputCityId = null;
     let closestCity = null;
     let furthestCity = null;
@@ -152,10 +152,10 @@ function findClosestAndFurthest(cityPrompt) {
 
     
 
-    highlightCities(cityPrompt, closestCityName, furthestCityName, maxDistance, minDistance);
+    colorCityBoxesByDistance(cityPrompt, closestCityName, furthestCityName, maxDistance, minDistance);
 }
 
-function highlightCities(cityPrompt, closestCityName, furthestCityName, maxDistance, minDistance) {
+function colorCityBoxesByDistance(cityPrompt, closestCityName, furthestCityName, maxDistance, minDistance) {
     const cityBoxes = document.querySelectorAll(".cityBox");
 
     cityBoxes.forEach(cityBox => {
@@ -177,7 +177,7 @@ function highlightCities(cityPrompt, closestCityName, furthestCityName, maxDista
         }
     });
 }
-findClosestAndFurthest(cityPrompt);
+findClosestAndFurthestCity(cityPrompt);
 
 
 
