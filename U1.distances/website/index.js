@@ -27,6 +27,13 @@ function createTable () {
         createDiv3.style.fontWeight = "bold";
         createDiv3.className = "cell";
         table.appendChild(createDiv3);
+
+        if (grayBox % 2 === 0) {
+            createDiv3.style.backgroundColor = "white";
+        } else {
+            createDiv3.style.backgroundColor = "gray";
+        }
+        grayBox++;
     
 
         for (const targetCity of cities) {
@@ -158,7 +165,6 @@ function highlightCities(cityPrompt, closestCityName, furthestCityName, maxDista
         }
     });
 }
-highlightCities()
 findClosestAndFurthest(cityPrompt);
 
 
