@@ -20,6 +20,8 @@ let cityPrompt = prompt("Skriv en stad i Europa");
 
 function createTable () {
     let grayBox = 0;
+    let border = 0;
+
 
     for (const city of cities) {
         const createDiv3 = document.createElement("div");
@@ -28,19 +30,28 @@ function createTable () {
         createDiv3.className = "cell";
         table.appendChild(createDiv3);
 
+        if (border % 2 === 0) {
+            createDiv3.classList.add("even_row");
+        } 
+
         if (grayBox % 2 === 0) {
             createDiv3.style.backgroundColor = "white";
         } else {
             createDiv3.style.backgroundColor = "gray";
         }
         grayBox++;
-    
+        border++;
 
         for (const targetCity of cities) {
             const createDiv4 = document.createElement("div");
             createDiv4.className = "cell";
             let distanceValue = distanceNumber(city.id, targetCity.id);
             createDiv4.textContent = `${distanceValue}`;
+
+            if (border % 2 === 1) {
+                createDiv4.classList.add("even_row");
+            } 
+            
 
             if (grayBox % 2 === 0) {
                 createDiv4.style.backgroundColor = "white";
@@ -53,6 +64,7 @@ function createTable () {
         }
 
     }
+    
 }
 
 
