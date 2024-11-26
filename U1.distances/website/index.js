@@ -18,7 +18,7 @@ let h3Text = document.querySelector("h3");
 let cityPrompt = prompt("Skriv en stad i Europa");
 
 
-function createTable () {
+function createTableAndColors () {
     let grayBox = 0;
     let border = 0;
 
@@ -82,7 +82,7 @@ function distanceNumber (city1Id, city2Id) {
     return "";
 }
 
-createTable ()
+createTableAndColors ()
 for(let city of cities) {
     const createDiv = document.createElement("div");
     cityDiv.appendChild(createDiv);
