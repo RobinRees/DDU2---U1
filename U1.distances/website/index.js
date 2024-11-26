@@ -133,10 +133,10 @@ function findClosestAndFurthest(cityPrompt) {
 
     
 
-    highlightCities(cityPrompt, closestCityName, furthestCityName);
+    highlightCities(cityPrompt, closestCityName, furthestCityName, maxDistance, minDistance);
 }
 
-function highlightCities(cityPrompt, closestCityName, furthestCityName) {
+function highlightCities(cityPrompt, closestCityName, furthestCityName, maxDistance, minDistance) {
     const cityBoxes = document.querySelectorAll(".cityBox");
 
     cityBoxes.forEach(cityBox => {
@@ -146,8 +146,13 @@ function highlightCities(cityPrompt, closestCityName, furthestCityName) {
             cityBox.classList.add("target");
         } else if (cityName.toLowerCase() === closestCityName.toLowerCase()) {
             cityBox.classList.add("closest");
+            cityBox.innerHTML += ` ligger ${minDistance / 10} mil ifrån`;
+            document.querySelector("#closest").innerHTML = cityName
         } else if (cityName.toLowerCase() === furthestCityName.toLowerCase()) {
             cityBox.classList.add("furthest");
+            cityBox.innerHTML += ` ligger ${maxDistance / 10} mil ifrån`;
+            document.querySelector("#furthest").innerHTML = cityName
+
         } else {
             cityBox.style.backgroundColor = ""; // Återställ om ingen match
         }
