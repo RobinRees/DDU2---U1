@@ -16,6 +16,8 @@ for (let i = 0; i < cities.length; i++) {
   createDiv2.textContent = i;
 }
 
+
+
 function createTableAndColors() {
   let grayBox = 0;
   let border = 0;
@@ -73,14 +75,12 @@ function distanceNumberForTable(city1Id, city2Id) {
   return "";
 }
 
-createTableAndColors();
 for (let city of cities) {
   const createDiv = document.createElement("div");
   cityDiv.appendChild(createDiv);
   createDiv.className = "cityBox";
   createDiv.textContent = `${city.name}`;
 }
-findClosestAndFurthestCity(cityPrompt);
 
 function findClosestAndFurthestCity(cityPrompt) {
   let inputCityId = null;
@@ -171,32 +171,13 @@ function colorCityBoxesByDistance(
       cityBox.innerHTML += ` ligger ${maxDistance / 10} mil ifrån`;
       document.querySelector("#furthest").innerHTML = cityName;
     } else {
-      cityBox.style.backgroundColor = ""; // Återställ om ingen match
+      cityBox.style.backgroundColor = ""; 
     }
   });
 }
+
+createTableAndColors();
 findClosestAndFurthestCity(cityPrompt);
 
-/*
 
-// Recommended: constants with references to existing HTML-elements
 
-// Recommended: Ask for the city name and then the rest of the code
-
-/*const table = document.querySelector("#table");*/
-
-// en loop som går igenom varje id, skriver ut namnet på första raden.
-// En loop i första loopen som går igenom alla idn och skriver ut varje distance 39 gånnger i varje cell efter.
-
-//Om cityId
-
-/*
-
-let i = 0; 0 < cities.id.length + 1; i++ {
-    skriv ut namnet på första cellen.
-    let j = 0; 0 < 39; j++ {
-        skriv ut distance i nästa cell om city1/city2 matchar med [i] city. 
-    }
-}
-
-*/
